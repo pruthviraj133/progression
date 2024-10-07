@@ -6,6 +6,33 @@ Last Updated: Week 1, OCT 06, 2024
    Description: Implement a function that takes a nested array as input and returns a flattened version of the array. This tests your ability to work with arrays and recursion.
    Concepts: #arrays #recursion #dataStructures
 
+JS Function for nested array -
+
+```
+function flattenArray(arr) {
+  // Initialize an empty array to store the flattened result
+  const result = [];
+
+  // Iterate over each element in the array
+  for (let i = 0; i < arr.length; i++) {
+    // If the element is an array, recursively flatten it
+    if (Array.isArray(arr[i])) {
+      result.push(...flattenArray(arr[i]));
+    } else {
+      // If the element is not an array, simply push it to the result
+      result.push(arr[i]);
+    }
+  }
+
+  return result;
+}
+
+const nestedArray = [1, 2, [3, 4, [5, 6]], 7, [8, 9]];
+const flattenedArray = flattenArray(nestedArray);
+console.log(flattenedArray); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+
 2. **JavaScript: Implement a simple debounce function.**
    Description: Create a debounce function that delays invoking a function until after a certain amount of time has elapsed since the last time it was invoked. This assesses your understanding of closures and asynchronous JavaScript.
    Concepts: #closures #asynchronousJavaScript #performanceOptimization
