@@ -37,6 +37,29 @@ console.log(flattenedArray); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
    Description: Create a debounce function that delays invoking a function until after a certain amount of time has elapsed since the last time it was invoked. This assesses your understanding of closures and asynchronous JavaScript.
    Concepts: #closures #asynchronousJavaScript #performanceOptimization
 
+
+JS Debounce Function - 
+```
+function debounce(func, delay) {
+  let timeoutId;
+
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+const logMessage = (message) => {
+    console.log(message);
+};
+  
+const debouncedLog = debounce(logMessage, 2000);
+
+debouncedLog("Hello");
+setTimeout(() => debouncedLog("World"), 1000);  // Won't log because it's within 2 seconds
+setTimeout(() => debouncedLog("Final Message"), 3000);  // Will log after 2 seconds
+```
+
 3. **React: Create a custom Hook for fetching data.**
    Description: Write a custom React Hook called `useFetch` that accepts a URL and returns the fetched data, loading state, and any error. This tests your understanding of Hooks and asynchronous operations in React.
    Concepts: #reactHooks #asynchronousOperations #dataFetching
